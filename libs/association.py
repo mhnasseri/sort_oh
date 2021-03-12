@@ -21,63 +21,6 @@ def associate_detections_to_trackers(mot_tracker, detections, trackers, groundtr
     matched_indices = np.asarray(matched_indices)
     matched_indices = np.transpose(matched_indices)     # first column: detection indexes, second column: object indexes
 
-    # # assign using area cost & our assignment algorithm
-    # # calculate intersection over union cost
-    # iou_matrix = calculate_cost.cal_iou(detections, trackers)
-    # # calculate area cost
-    # area_cost_matrix = calculate_cost.cal_area_cost(detections, trackers)
-    # cost_matrix = area_cost_matrix - iou_matrix
-    #
-    # ios_matrix = calculate_cost.cal_ios_matrix(trackers)
-    # # iou_matrix = calculate_cost.cal_iou_matrix(detections, trackers) #, area_limit=1)
-    # # iou_matrix = np.zeros((len(detections), len(trackers)), dtype=np.float32)
-    # # for d, det in enumerate(detections):
-    # #     for t, trk in enumerate(trackers):
-    # #         iou_matrix[d, t] = calculate_cost.iou(det, trk)
-    #
-    # # save iou_matrix in the log file
-    # # print('\n', file=log_file)
-    # # print(mot_tracker.frame_count, file=log_file)
-    # # str = '\n'.join('\t'.join('%0.3f' % x for x in y) for y in iou_matrix)
-    # # print(str, file=log_file)
-    # # cost_matrix = 0.1 - iou_matrix
-    # # matched_indices = linear_assignment(-iou_matrix)
-    # # matched_indices = linear_sum_assignment(cost_matrix)
-    # # matched_indices = np.asarray(matched_indices)
-    # # matched_indices = np.transpose(matched_indices)     # first column: detection indexes, second column: object indexes
-    #
-    # flag = 1
-    # while (flag):
-    #     flag = 0
-    #     min_index = np.argmin(cost_matrix, axis=0)
-    #     trgtsLen = np.size(min_index)
-    #     detsLen = len(detections)
-    #     dets_assign = np.ones(detsLen, dtype=np.int) * -1
-    #     dets_assign_value = np.zeros(detsLen, dtype=np.float)
-    #     matched = []
-    #     min_cost = 0.2
-    #     for i in range(trgtsLen):
-    #         if cost_matrix[min_index[i], i] < min_cost:
-    #             if dets_assign[min_index[i]] == -1:
-    #                 dets_assign[min_index[i]] = i
-    #                 cost = cost_matrix[min_index[i], i]
-    #                 dets_assign_value[min_index[i]] = cost
-    #             else:
-    #                 flag = 1
-    #                 if dets_assign_value[min_index[i]] < cost_matrix[min_index[i], i]:
-    #                     cost_matrix[min_index[i], i] = min_cost  # should be grater then limit on line 46 (0.5)
-    #                 else:
-    #                     cost_matrix[min_index[i], dets_assign[min_index[i]]] = min_cost
-    #                 break
-    #
-    # for i in range(detsLen):
-    #     if dets_assign[i] != -1:
-    #         row = np.array([[i, dets_assign[i]]])
-    #         matched.append(row)
-    # matched_indices = np.zeros((0, 2))
-    # if len(matched) > 0:
-    #     matched_indices = np.concatenate(matched)
-
     unmatched_detections = []
     for d, det in enumerate(detections):
         if d not in matched_indices[:, 0]:
@@ -169,25 +112,6 @@ def associate_detections_to_trackers(mot_tracker, detections, trackers, groundtr
                 to_del_undb = np.sort(to_del_undb)
                 for i in reversed(to_del_undb):
                     mot_tracker.unmatched_before.pop(i)
-
-    # Estimate camera movement
-    # num = 0
-    # diff_x_sum = 0
-    # diff_y_sum = 0
-    # diff_x_avg = 0
-    # diff_y_avg = 0
-    # for m in matches:
-    #     num += 1
-    #     diff_x_sum += ((detections[m[0], 0] - detections[m[0], 2]/2) - (trackers[m[1], 0] - trackers[m[1], 2]/2))
-    #     diff_y_sum += ((detections[m[0], 1] - detections[m[0], 3]/2) - (trackers[m[1], 1] - trackers[m[1], 3]/2))
-    # if num > 0:
-    #     diff_x_avg = diff_x_sum/num
-    #     diff_y_avg = diff_y_sum/num
-    # mot_tracker.camera_motion.append(np.array([diff_x_avg, diff_y_avg]))
-
-    # consider targets with high intersection with other targets as occluded
-    # This detection of occluded targets only applies to targets with large bounding box
-    #  (bigger than average for front view camera)
 
     occluded_trackers = []
     if mot_tracker.frame_count > mot_tracker.min_hits:
