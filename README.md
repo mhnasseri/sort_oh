@@ -96,3 +96,9 @@ The `tracker_app.py` expects detections in motchallenge format
 ## Citing SORT_OH
 
 If you find this repo useful in your research, please consider citing the following paper:
+@article{nasseri2021simple,
+  title={Simple online and real-time tracking with occlusion handling},
+  author={Nasseri, Mohammad Hossein and Moradi, Hadi and Hosseini, Reshad and Babaee, Mohammadreza},
+  journal={arXiv preprint arXiv:2103.04147},
+  year={2021}
+}
