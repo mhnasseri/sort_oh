@@ -26,7 +26,7 @@ if __name__ == '__main__':
                  'MOT17-11-DPM', 'MOT17-13-DPM',
                  'MOT17-02-FRCNN', 'MOT17-04-FRCNN', 'MOT17-05-FRCNN', 'MOT17-09-FRCNN', 'MOT17-10-FRCNN',
                  'MOT17-11-FRCNN', 'MOT17-13-FRCNN',
-                 'MOT17-09-SDP', 'MOT17-04-SDP', 'MOT17-05-SDP', 'MOT17-09-SDP', 'MOT17-10-SDP',
+                 'MOT17-02-SDP', 'MOT17-04-SDP', 'MOT17-05-SDP', 'MOT17-09-SDP', 'MOT17-10-SDP',
                  'MOT17-11-SDP', 'MOT17-13-SDP']
     # sequences = ['MOT17-02-POI', 'MOT17-04-POI', 'MOT17-05-POI', 'MOT17-09-POI', 'MOT17-10-POI',
     #              'MOT17-11-POI', 'MOT17-13-POI']
