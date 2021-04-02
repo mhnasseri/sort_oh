@@ -11,6 +11,8 @@ a decrease in the ID Switch metric, but the fragmentation metric is increased be
 In the proposed algorithm, occlusions are detected using only the location and size of bounding boxes and both ID switch and Fragmentation metrics are decreased simultaneously without a considerable increase in computation cost.
 See the [arXiv preprint](http://arxiv.org/abs/2103.04147) for more information.
 
+https://user-images.githubusercontent.com/18026505/113399093-e3ca1480-93b4-11eb-9342-7ae5082e4bd4.mp4
+
 ## Dependencies
 
 The code is compatible with Python 3. The following dependencies are
