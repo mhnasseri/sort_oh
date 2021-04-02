@@ -12,7 +12,8 @@ In the proposed algorithm, occlusions are detected using only the location and s
 See the [arXiv preprint](http://arxiv.org/abs/2103.04147) for more information.
 
 <p>
-<img align="center" width="96%" src="https://github.com/mhnasseri/sort_oh/blob/main/Video_MOT17-09-SDP.gif">
+<img align="center" width="48%" src="https://github.com/mhnasseri/sort_oh/blob/main/Video_MOT17-02-SDP.gif">
+<img align="center" width="48%" src="https://github.com/mhnasseri/sort_oh/blob/main/Video_MOT17-09-SDP.gif">
 </p>
 
 ## Dependencies
