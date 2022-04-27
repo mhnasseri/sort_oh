@@ -2,11 +2,11 @@ from numba import jit
 import numpy as np
 
 
-@jit
+# @jit
 def iou(bb_det, bb_trk):
     """
-  Computes IOU (Intersection Over Union) between two bounding boxes in the form [x1,y1,x2,y2]
-  """
+    Computes IOU (Intersection Over Union) between two bounding boxes in the form [x1,y1,x2,y2]
+    """
     xx1 = np.maximum(bb_det[0], bb_trk[0])
     xx2 = np.minimum(bb_det[2], bb_trk[2])
     w = np.maximum(0., xx2 - xx1)
@@ -72,7 +72,7 @@ def iou_ext_sep(bb_det, bb_trk, ext_w, ext_h):
     return o
 
 
-@jit
+# @jit
 def outside(trk, img_s):
     """
     Computes how many percent of trk is placed outside of img_s
@@ -92,7 +92,7 @@ def outside(trk, img_s):
     return out_a / area
 
 
-@jit
+# @jit
 def area_cost(bb_det, bb_trk):
     """
     This cost compute the difference between bounding box sizes
@@ -124,13 +124,13 @@ def area_cost(bb_det, bb_trk):
     return ratio - 1
 
 
-@jit
+# @jit
 # intersection over union with limit on area
 def iou_la(bb_det, bb_trk):
     """
-  Computes IOU (Intersection Over Union) between two bounding boxes in the form [x1,y1,x2,y2]
-  with limitation on percentage of change of area
-  """
+    Computes IOU (Intersection Over Union) between two bounding boxes in the form [x1,y1,x2,y2]
+    with limitation on percentage of change of area
+    """
     xx1 = np.maximum(bb_det[0], bb_trk[0])
     xx2 = np.minimum(bb_det[2], bb_trk[2])
     w = np.maximum(0., xx2 - xx1)
@@ -153,11 +153,11 @@ def iou_la(bb_det, bb_trk):
     return o
 
 
-@jit
+# @jit
 def ios(bb_first, bb_second):
     """
-  Computes IOS (Intersection Over Second Bounding Box) between two bounding boxes in the form [x1,y1,x2,y2]
-  """
+    Computes IOS (Intersection Over Second Bounding Box) between two bounding boxes in the form [x1,y1,x2,y2]
+    """
     xx1 = np.maximum(bb_first[0], bb_second[0])
     yy1 = np.maximum(bb_first[1], bb_second[1])
     xx2 = np.minimum(bb_first[2], bb_second[2])
@@ -208,5 +208,3 @@ def cal_ios_matrix(trackers):
             if t2 != t1:
                 ios_matrix[t1, t2] = ios(trk1, trk2)
     return ios_matrix
-
-

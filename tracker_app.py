@@ -49,7 +49,7 @@ if __name__ == '__main__':
     conf_objt = 0.75
     imgFolder = 'images/img_OH_EX_0.2_N_SEP_CONF_TOT_MIN_EXT_%s_%s' % (conf_trgt, conf_objt)     # Occlusion Handling + Area Cost /Extended Separate
     outFolder = 'outputs/output_OH_EX_0.2_N_SEP_CONF_TOT_MIN_%s_%s' % (conf_trgt, conf_objt)
-    mot_path = 'C:/Users/mhnas/Courses/Thesis/MOT/MOT17'
+    mot_path = 'MOT17'
     args = parse_args()
 
     total_time = 0.0
@@ -60,8 +60,16 @@ if __name__ == '__main__':
 
     for seq in sequences:
         kalman_tracker.KalmanBoxTracker.count = 0   # Make zero ID number in the new sequence
-        mot_tracker = tracker.Sort_OH()  # create instance of the SORT with occlusion handling tracker
-        mot_tracker.seq = seq
+
+        if seq == 'MOT17-05-DPM' or seq == 'MOT17-05-FRCNN' or seq == 'MOT17-05-SDP' \
+           or seq == 'MOT17-05-POI' or seq == 'MOT17-06-DPM' or seq == 'MOT17-06-FRCNN' \
+           or seq == 'MOT17-06-SDP' or seq == 'MOT17-06-POI':
+            scene = np.array([640, 480])
+        else:
+            scene = np.array([1920, 1080])
+
+        mot_tracker = tracker.Sort_OH(scene=scene)  # create instance of the SORT with occlusion handling tracker
+        # mot_tracker.seq = seq
         mot_tracker.conf_trgt = conf_trgt
         mot_tracker.conf_objt = conf_objt
         common_path = ('%s/%s/%s' % (mot_path, phase, seq))
