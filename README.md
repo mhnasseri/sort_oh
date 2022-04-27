@@ -16,22 +16,19 @@ See the [arXiv preprint](http://arxiv.org/abs/2103.04147) for more information.
 <img align="center" width="48%" src="https://github.com/mhnasseri/sort_oh/blob/main/Video_MOT17-09-SDP.gif">
 </p>
 
-## Dependencies
-
-The code is compatible with Python 3. The following dependencies are
-needed to run the tracker:
-
-* NumPy
-* sklearn
-* OpenCV
-* filterpy
-
 ## Installation
 
 First, clone the repository:
 ```
 git clone https://github.com/mhnasseri/sort_oh.git
 ```
+
+Install the dependencies using
+
+```
+pip install -r requirements.txt
+```
+
 Then, download the MOT17 dataset from [here](https://motchallenge.net/data/MOT17/).
 
 In order to results on MOT16 be comparable with the results of SORT and DeepSORT algorithms, the private detection taken from the following paper:
