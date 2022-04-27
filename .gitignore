@@ -1,0 +1,8 @@
+.idea
+.coverage
+htmlcov/
+MOT17Labels/
+*.zip
+outputs/
+MOT17/
+venv/

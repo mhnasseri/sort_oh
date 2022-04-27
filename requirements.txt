@@ -1,0 +1,7 @@
+tqdm
+opencv-python
+filterpy
+numpy
+scipy
+numba
+matplotlib
